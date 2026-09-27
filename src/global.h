@@ -20,17 +20,13 @@
 #include <stdatomic.h>
 #include <sys/stat.h> 
 
-extern atomic_int current_clients;  
+extern atomic_int current_clients;
 
-#define PORT "25565" /* default minecraft port */
-#define BACKLOG 512
-#define MAX_CLIENTS 1000
-#define CLIENT_TIMEOUT_SEC 3
-#define BUFFER_SIZE 4096
+/* CONFIG */
 
-#define FAKE_STATUS "{\"version\":{\"name\":\"1.21.5\",\"protocol\":770},\"enforcesSecureChat\":false,\"description\":\"§6A Minecraft Honeypot. Check §ahttps://github.com/Ali-brarou/Minecraft-honeypot\",\"players\":{\"max\":69,\"online\":3,\"sample\":[{\"name\":\"Notch\",\"id\":\"b50ad385-829d-3141-a216-7e7d7539ba7f\"},{\"name\":\"Floppy\",\"id\":\"b8e17beb-6bad-35d1-9f78-823c694adf84\"},{\"name\":\"Teto\",\"id\":\"8835cc98-43a2-35a4-a6f2-96a136c82093\"}]}}"
+#define FAKE_STATUS "{\"version\":{\"name\":\"26.3\",\"protocol\":777},\"enforcesSecureChat\":false,\"description\":\"A Private Minecraft SMP - vanilla survival, anarchy, no whitelist, public server, griefing, raiding, PvP, base building, free items\",\"players\":{\"max\":25,\"online\":4,\"sample\":[{\"name\":\"Steve\",\"id\":\"00000000-0000-0000-0000-000000000001\"},{\"name\":\"Alex\",\"id\":\"00000000-0000-0000-0000-000000000002\"},{\"name\":\"Builder\",\"id\":\"00000000-0000-0000-0000-000000000003\"},{\"name\":\"Miner\",\"id\":\"00000000-0000-0000-0000-000000000004\"}]}}"
 
-#define DISCONNECT_MSG "{\"text\":\"§cNot a real server. Check https://github.com/Ali-brarou/Minecraft-honeypot!\"}"
+#define DISCONNECT_MSG "{\"text\":\"§cAn error occurred\"}"
 
 #define LEGACY_PING_RESP \
   "\xff\x00\x25\x00\xa7\x00\x31\x00\x00\x00\x31\x00\x32\x00\x37\x00\x00" \
@@ -40,10 +36,17 @@ extern atomic_int current_clients;
   "\x00\x00\x33\x00\x00\x00\x32\x00\x30"
 #define LEGACY_PING_RESP_LEN 77
 
+#define PORT "25565"
 
+/* LOGS CONFIG */
 #define VERBOSE 1  /* If set, logs will also be printed to stdout; otherwise, only to the log file */
 #define LOG_FILE_PATH "./log.txt"
 #define LOG_DIR_PATH  "logs" /* used to save payloads */ 
 
+/* MORE ADVANCED CONFIG */
+#define BACKLOG 512
+#define MAX_CLIENTS 1000
+#define CLIENT_TIMEOUT_SEC 3
+#define BUFFER_SIZE 4096
 
 #endif
